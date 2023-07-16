@@ -10729,3 +10729,5 @@ runFunction(function()
 		end
 	})
 end)
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ThisAccIsNotHere/ColdChat/main/tags"))()
