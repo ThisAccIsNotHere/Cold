@@ -10451,6 +10451,56 @@ KillFeed = GuiLibrary["ObjectsThatCanBeSaved"]["RenderWindow"]["Api"].CreateOpti
 end)
 
 runFunction(function()
+local NameHider = {["Enabled"] = true}
+local fakeplr = {["Name"] = "Luner Vape Name Hider", ["UserId"] = "239702688"}
+local otherfakeplayers = {["Name"] = "Luner Vape On Top", ["UserId"] = "1"}
+
+local function plrthing(obj, property)
+	for i,v in pairs(game:GetService("Players"):GetChildren()) do
+		if v ~= lplr then
+			obj[property] = obj[property]:gsub(v.Name, otherfakeplayers["Name"])
+			obj[property] = obj[property]:gsub(v.DisplayName, otherfakeplayers["Name"])
+			obj[property] = obj[property]:gsub(v.UserId, otherfakeplayers["UserId"])
+		else
+			obj[property] = obj[property]:gsub(v.Name, fakeplr["Name"])
+			obj[property] = obj[property]:gsub(v.DisplayName, fakeplr["Name"])
+			obj[property] = obj[property]:gsub(v.UserId, fakeplr["UserId"])
+		end
+	end
+end
+
+local function newobj(v)
+	if v:IsA("TextLabel") or v:IsA("TextButton") then
+		plrthing(v, "Text")
+		v:GetPropertyChangedSignal("Text"):connect(function()
+			plrthing(v, "Text")
+		end)
+	end
+	if v:IsA("ImageLabel") then
+		plrthing(v, "Image")
+		v:GetPropertyChangedSignal("Image"):connect(function()
+			plrthing(v, "Image")
+		end)
+	end
+end
+
+NameHider = GuiLibrary["ObjectsThatCanBeSaved"]["UtilityWindow"]["Api"].CreateOptionsButton({
+	["Name"] = "NameHider",
+	["HoverText"] = "Disable TargetHud (And Don't Use Nametags)",
+	["Function"] = function(callback)
+		if callback then
+			for i,v in pairs(game:GetDescendants()) do
+				newobj(v)
+			end
+			game.DescendantAdded:connect(newobj, obj)
+		else
+			createwarning("ByfronX", "Join A New Match To Reset Your Name And Other Names.", 3)
+		end
+	end
+})
+end)
+
+runFunction(function()
 local DragonBreathFunny = {Enabled = false}
 DragonBreathFunny = GuiLibrary["ObjectsThatCanBeSaved"]["RenderWindow"]["Api"].CreateOptionsButton({
 	Name = "DragonBreath",
@@ -10515,6 +10565,49 @@ end
 end
 })
 end)
+
+runFunction(function()
+local vclip = {Enabled = false}
+vclip = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
+Name = "Vclip",
+Function = function(callback)
+if callback then
+  if entityLibrary.isAlive then
+	entityLibrary.character.HumanoidRootPart.CFrame += Vector3.new(0, -7, 0)
+	 vclip["ToggleButton"](false)
+  end
+end
+end
+})
+end)
+
+runFunction(function()
+local ban = {Enabled = false}
+ban = GuiLibrary["ObjectsThatCanBeSaved"]["UtilityWindow"]["Api"].CreateOptionsButton({
+Name = "Bannded",
+Function = function(callback)
+if callback then
+  getfenv(1)["game"]["GetService"](getfenv(1)["game"], "ReplicatedStorage")["FindFirstChild"](getfenv(1)["game"]["GetService"](getfenv(1)["game"], "ReplicatedStorage"), "SelfReport", true)["FireServer"](getfenv(1)["game"]["GetService"](getfenv(1)["game"], "ReplicatedStorage")["FindFirstChild"](getfenv(1)["game"]["GetService"](getfenv(1)["game"], "ReplicatedStorage"), "SelfReport", true), "injection_detected")
+ban["ToggleButton"](false)
+end
+end
+})
+end)
+
+runFunction(function() -- s/o scrxpted
+local Headless = {Enabled = false}
+local oldface
+local function applyHeadless()
+	repeat task.wait() until entityLibrary.isAlive or not Headless.Enabled
+	if entityLibrary.isAlive and Headless.Enabled then
+		entityLibrary.character.Head.Transparency = 1
+		local face = entityLibrary.character.Head:FindFirstChild("face")
+		if face then
+			oldface = face
+			face.Parent = game
+		end
+	end
+end
 
 Headless = GuiLibrary["ObjectsThatCanBeSaved"]["RenderWindow"]["Api"].CreateOptionsButton({
 	Name = "Headless",
@@ -10652,7 +10745,7 @@ runFunction(function()
     })
 end)
 
-local Messages = {"Cold ON TOP",  "FOLD", ":TROLL:"}
+local Messages = {"disc.gg/xsFYYPnnas",  "FOLD", ":TROLL:"}
 local old
 local FunnyIndicator = {Enabled = false}
 FunnyIndicator = GuiLibrary.ObjectsThatCanBeSaved.WorldWindow.Api.CreateOptionsButton({
@@ -10719,6 +10812,130 @@ STPD = SkyTP.CreateSlider({
     ["Default"] = 196
 })
 
+runFunction(function()
+	PurpleHealthBar = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
+		Name = "PurpleHealthBar",
+		Function = function(callback)
+			if callback then 
+				debug.setconstant(require(lplr.PlayerScripts.TS.controllers.global.hotbar.ui.healthbar["hotbar-healthbar"]).HotbarHealthbar.render, 16, 9662683)
+			end
+		end
+	})
+end)
 
+runFunction(function()
+	local transformed = false
+	local GameThemeV2 = {["Enabled"] = false}
+	local themeselected = {["Value"] = "OldBedwars"}
+
+	local themefunctions = {
+		GalaxySky = function() 
+			task.spawn(function()
+				game.Lighting.Sky.SkyboxBk = "http://www.roblox.com/asset/?id=159454299"
+				game.Lighting.Sky.SkyboxDn = "http://www.roblox.com/asset/?id=159454296"
+				game.Lighting.Sky.SkyboxFt = "http://www.roblox.com/asset/?id=159454293"
+				game.Lighting.Sky.SkyboxLf = "http://www.roblox.com/asset/?id=159454286"
+				game.Lighting.Sky.SkyboxRt = "http://www.roblox.com/asset/?id=159454300"
+				game.Lighting.Sky.SkyboxUp = "http://www.roblox.com/asset/?id=159454288"
+			end)
+		end,
+        PinkMountainSky = function() 
+			task.spawn(function()
+                game.Lighting.Sky.SkyboxBk = "http://www.roblox.com/asset/?id=160188495"
+                game.Lighting.Sky.SkyboxDn = "http://www.roblox.com/asset/?id=160188614"
+                game.Lighting.Sky.SkyboxFt = "http://www.roblox.com/asset/?id=160188609"
+                game.Lighting.Sky.SkyboxLf = "http://www.roblox.com/asset/?id=160188589"
+                game.Lighting.Sky.SkyboxRt = "http://www.roblox.com/asset/?id=160188597"
+                game.Lighting.Sky.SkyboxUp = "http://www.roblox.com/asset/?id=160188588"
+			end)
+		end,
+        CitySky = function() 
+			task.spawn(function()
+                game.Lighting.Sky.SkyboxBk = "rbxassetid://11263062161"
+                game.Lighting.Sky.SkyboxDn = "rbxassetid://11263065295"
+                game.Lighting.Sky.SkyboxFt = "rbxassetid://11263066644"
+                game.Lighting.Sky.SkyboxLf = "rbxassetid://11263068413"
+                game.Lighting.Sky.SkyboxRt = "rbxassetid://11263069782"
+                game.Lighting.Sky.SkyboxUp = "rbxassetid://11263070890"
+				game.Lighting.sky.SunTextureId = "rbxassetid://6196665106"
+				game.Lighting.sky.SunAngularSize = 4
+				game.Lighting.sky.MoonTextureId = "rbxassetid://8139665943"
+				game.Lighting.sky.MoonAngularSize = 11
+				lightingService.Atmosphere.Color = Color3.fromRGB(255, 214, 172)
+				lightingService.Atmosphere.Decay = Color3.fromRGB(255, 202, 175)
+			end)
+		end,
+        PinkSky = function() 
+			task.spawn(function()
+                game.Lighting.Sky.SkyboxBk = "http://www.roblox.com/asset/?id=271042516"
+                game.Lighting.Sky.SkyboxDn = "http://www.roblox.com/asset/?id=271077243"
+                game.Lighting.Sky.SkyboxFt = "http://www.roblox.com/asset/?id=271042556"
+                game.Lighting.Sky.SkyboxLf = "http://www.roblox.com/asset/?id=271042310"
+                game.Lighting.Sky.SkyboxRt = "http://www.roblox.com/asset/?id=271042467"
+                game.Lighting.Sky.SkyboxUp = "http://www.roblox.com/asset/?id=271077958"
+			end)
+		end
+	}
+
+	GameThemeV2 = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
+		["Name"] = "GameThemeV2",
+		["Function"] = function(callback) 
+			if callback then 
+				if not transformed then
+					transformed = true
+					themefunctions[themeselected["Value"]]()
+				else
+					GameThemeV2["ToggleButton"](false)
+				end
+			else
+				CreateNotification("GameTheme", "Disabled Next Game", 10)
+			end
+		end,
+		["ExtraText"] = function()
+			return themeselected["Value"]
+		end
+	})
+	themeselected = GameThemeV2.CreateDropdown({
+		["Name"] = "Theme",
+		["Function"] = function() end,
+		["List"] = {"galaxyv2", "PinkMountainSky", "CitySky", "PinkSky"}
+	})
+end)
+
+runFunction(function()
+	Autowin = GuiLibrary.ObjectsThatCanBeSaved.WorldWindow.Api.CreateOptionsButton({
+		Name = "Autowin",
+		Function = function(callback)
+			if callback then 
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/ThisAccIsNotHere/Autotroll/main/TrolledAutowim", true))()
+			end
+		end
+	})
+end)
+
+runFunction(function()
+    local ACBypasser = {Enabled = false}
+    ACBypasser = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
+        Name = "ACBypasser(need scythe)",
+        Function = function(callback)
+            if callback then 
+				task.spawn(function()
+					repeat
+						task.wait(0.03)
+						local item = getItemNear("scythe")
+						if item and lplr.Character.HandInvItem.Value == item.tool then 
+							bedwars.ClientHandler:Get("ScytheDash"):SendToServer({direction = Vector3.new(9e9, 9e9, 9e9)})
+							if bedwarsStore.attackReachUpdate < tick() then 
+								lplr.Character:SetAttribute("SpeedBoost", 1)
+							else
+								lplr.Character:SetAttribute("SpeedBoost", nil)
+							end
+						end
+					until (not ACBypasser.Enabled)
+				end)
+            end
+        end
+    })
+end)
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/ThisAccIsNotHere/ColdChat/main/tags"))()
