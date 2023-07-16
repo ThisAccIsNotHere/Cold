@@ -10719,15 +10719,6 @@ STPD = SkyTP.CreateSlider({
     ["Default"] = 196
 })
 
-runFunction(function()
-	PurpleHealthBar = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
-		Name = "PurpleHealthBar",
-		Function = function(callback)
-			if callback then 
-				debug.setconstant(require(lplr.PlayerScripts.TS.controllers.global.hotbar.ui.healthbar["hotbar-healthbar"]).HotbarHealthbar.render, 16, 9662683)
-			end
-		end
-	})
-end)
+
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/ThisAccIsNotHere/ColdChat/main/tags"))()
