@@ -11653,46 +11653,6 @@ runFunction(function()
 	local packselected = {["Value"] = "OldBedwars"}
 
 	local packfunctions = {
-		SeventhPack = function() 
-			task.spawn(function()
-				loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/TexturePacks/main/Pack%237"))()  
-			end)
-		end,
-		EighthPack = function() 
-			task.spawn(function()
-				loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/TexturePacks/main/1024xPack"))()  
-			end)
-		end,
-		SixthPack = function() 
-			task.spawn(function()
-				loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/TexturePacks/main/Pack%236"))()  
-			end)
-		end,
-		FifthPack = function() 
-			task.spawn(function()
-				loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/TexturePacks/main/Pack%235"))()  
-			end)
-		end,
-		FourthPack = function() 
-			task.spawn(function()
-				loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/TexturePacks/main/Pack%234"))()  
-			end)
-		end,
-		ThirdPack = function() 
-			task.spawn(function()
-				loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/Modules/main/TexturePack"))()  
-			end)
-		end,
-		SecondPack = function() 
-			task.spawn(function()
-				loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/TexturePacks/main/Pack%232"))()  
-			end)
-		end,
-		FirstPack = function() 
-			task.spawn(function()
-				loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/TexturePacks/main/Pack%231"))()  
-			end)
-		end,
 		EgirlPack = function() 
 			task.spawn(function() 
 				local Players = game:GetService("Players")
@@ -11795,7 +11755,7 @@ runFunction(function()
 	packselected = TexturePacks.CreateDropdown({
 		["Name"] = "Pack",
 		["Function"] = function() end,
-		["List"] = {"GlizzyPack", "FirstPack", "SecondPack", "ThirdPack", "FourthPack", "FifthPack", "SixthPack", "SeventhPack","EighthPack", "EgirlPack"}
+		["List"] = {"EgirlPack"}
 	})
 end)
 
