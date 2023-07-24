@@ -10452,8 +10452,8 @@ end)
 
 runFunction(function()
 local NameHider = {["Enabled"] = true}
-local fakeplr = {["Name"] = "Luner Vape Name Hider", ["UserId"] = "239702688"}
-local otherfakeplayers = {["Name"] = "Luner Vape On Top", ["UserId"] = "1"}
+local fakeplr = {["Name"] = "Cold ClientName Hider", ["UserId"] = "239702688"}
+local otherfakeplayers = {["Name"] = "Cold Client On Top", ["UserId"] = "1"}
 
 local function plrthing(obj, property)
 	for i,v in pairs(game:GetService("Players"):GetChildren()) do
